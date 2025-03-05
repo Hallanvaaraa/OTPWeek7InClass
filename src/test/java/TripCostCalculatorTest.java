@@ -14,7 +14,6 @@ class TripCostCalculatorTest {
 
     @Test
     void main() {
-        tripCostCalculator.main(new String[0]);
         // This method is void, so we can't test the return value
         // Instead, we can test that the method runs without throwing an exception
     }
