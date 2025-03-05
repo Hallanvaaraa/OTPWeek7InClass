@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    /*environment {
-        DOCKERHUB_CREDENTIALS_ID = 'dockerhub-credentials'
-        DOCKERHUB_REPO = 'amirdi/devopschain'
-        DOCKER_IMAGE_TAG = 'ver2'
-    }*/
+    environment {
+        DOCKERHUB_CREDENTIALS_ID = '797c8c7b-dc68-40fd-9269-60fe100f457c'
+        DOCKERHUB_REPO = 'tommish/tripcost'
+        DOCKER_IMAGE_TAG = 'latest'
+    }
 
     tools {
         maven 'Maven3'
@@ -42,21 +42,21 @@ pipeline {
                 jacoco()
             }
         }
-        /*stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${env.DOCKERHUB_REPO}:${env.DOCKER_IMAGE_TAG}")
+                    docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
                 }
             }
         }
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', env.DOCKERHUB_CREDENTIALS_ID) {
-                        docker.image("${env.DOCKERHUB_REPO}:${env.DOCKER_IMAGE_TAG}").push()
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS_ID) {
+                        docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
                     }
                 }
             }
-        }*/
+        }
     }
 }
